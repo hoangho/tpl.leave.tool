@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Leave type:</b>
+  <%= @leave_request.leave_type_id %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @leave_request.comment %>
+</p>
+
+<p>
+  <b>Leave from:</b>
+  <%= @leave_request.leave_from %>
+</p>
+
+<p>
+  <b>Leave to:</b>
+  <%= @leave_request.leave_to %>
+</p>
+
+<p>
+  <b>User request:</b>
+  <%= @leave_request.user_request_id %>
+</p>
+
+<p>
+  <b>User approve:</b>
+  <%= @leave_request.user_approve_id %>
+</p>
+
+<p>
+  <b>Is approved:</b>
+  <%= @leave_request.is_approved %>
+</p>
+
+
+<%= link_to 'Edit', edit_leave_request_path(@leave_request) %> |
+<%= link_to 'Back', leave_requests_path %>

@@ -1,0 +1,23 @@
+<h1>Listing position_types</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @position_types.each do |position_type| %>
+  <tr>
+    <td><%= position_type.name %></td>
+    <td><%= link_to 'Show', position_type %></td>
+    <td><%= link_to 'Edit', edit_position_type_path(position_type) %></td>
+    <td><%= link_to 'Destroy', position_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Position type', new_position_type_path %>
