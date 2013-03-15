@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
         ax = OpenID::AX::FetchResponse.from_success_response(openid)
         user = User.where(:identifier_url => openid.display_identifier).first
         user ||= User.find_by_email(ax.get_single('http://axschema.org/contact/email')) 
-
+        
         sign_in user
         if user.first_name.blank?
           redirect_to edit_user_path(user)
@@ -53,5 +53,9 @@ class SessionsController < ApplicationController
   	sign_out
     redirect_to root_url
     puts '----------Destroy of #{self.class.to_s}'
+  end
+
+  def access_denied
+    
   end
 end

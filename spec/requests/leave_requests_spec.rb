@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe "LeaveRequests" do
+describe "Leave Request page" do
  	
 end

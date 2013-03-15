@@ -34,8 +34,9 @@ module SessionsHelper
 
   	def ensure_signed_in
 	    unless signed_in?
-	      store_location
-	      redirect_to new_session_path
+	      # store_location
+	      # redirect_to new_session_path
+	      redirect_to access_denied_path
 	    end
   	end
 

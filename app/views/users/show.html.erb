@@ -1,6 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Admin:</b>
+  <%= @user.admin %>
+</p>
+
+<p>
+  <b>Balance:</b>
+  <%= @user.balance %>
+</p>
+
+<p>
+  <b>Day of birth:</b>
+  <%= @user.day_of_birth %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+<p>
   <b>First name:</b>
   <%= @user.first_name %>
 </p>
@@ -11,18 +31,8 @@
 </p>
 
 <p>
-  <b>Day of birth:</b>
-  <%= @user.day_of_birth %>
-</p>
-
-<p>
-  <b>Balance:</b>
-  <%= @user.balance %>
-</p>
-
-<p>
-  <b>User rold:</b>
-  <%= @user.user_rold_id %>
+  <b>Identifier url:</b>
+  <%= @user.identifier_url %>
 </p>
 
 <p>
@@ -31,13 +41,8 @@
 </p>
 
 <p>
-  <b>Admin:</b>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <b>Start work day:</b>
-  <%= @user.start_work_day %>
+  <b>Remember token:</b>
+  <%= @user.remember_token %>
 </p>
 
 <p>
@@ -46,18 +51,13 @@
 </p>
 
 <p>
-  <b>Email:</b>
-  <%= @user.email %>
+  <b>Start work day:</b>
+  <%= @user.start_work_day %>
 </p>
 
 <p>
-  <b>Remember token:</b>
-  <%= @user.remember_token %>
-</p>
-
-<p>
-  <b>Identifier url:</b>
-  <%= @user.identifier_url %>
+  <b>User role:</b>
+  <%= @user.user_role_id %>
 </p>
 
 

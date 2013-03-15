@@ -1,6 +1,6 @@
 module ApplicationHelper
 	def full_title(page_title)
-		base_title = "Leave tools"
+		base_title = "Leave Tool"
 		if page_title.empty?
 			base_title
 		else

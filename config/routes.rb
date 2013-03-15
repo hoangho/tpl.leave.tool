@@ -1,31 +1,25 @@
 TplLeaveTool::Application.routes.draw do
-  get "static_pages/home"
-
-  get "static_pages/about"
-
-  get "static_pages/help"
-
-  get "static_pages/contact"
-
   resources :users
 
 
-  get "session/new"
-
-  get "session/create"
-
+  resources :users
   resources :leave_requests
-
-
   resources :user_roles
-
-
   resources :position_types
-
-
   resources :leave_types
+  resource :session
 
+  root to: 'static_pages#home'
+  match '/about',   to: 'static_pages#about'
+  match '/contact', to: 'static_pages#contact'  
 
+  match '/signup', to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy', via: :delete
+
+  match '/create_request', to: 'leave_requests#new'
+
+  match '/access_denied', to: 'sessions#access_denied'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -12,6 +12,22 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :admin %><br />
+    <%= f.check_box :admin %>
+  </div>
+  <div class="field">
+    <%= f.label :balance %><br />
+    <%= f.text_field :balance %>
+  </div>
+  <div class="field">
+    <%= f.label :day_of_birth %><br />
+    <%= f.datetime_select :day_of_birth %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
     <%= f.label :first_name %><br />
     <%= f.text_field :first_name %>
   </div>
@@ -20,44 +36,28 @@
     <%= f.text_field :last_name %>
   </div>
   <div class="field">
-    <%= f.label :day_of_birth %><br />
-    <%= f.datetime_select :day_of_birth %>
-  </div>
-  <div class="field">
-    <%= f.label :balance %><br />
-    <%= f.text_field :balance %>
-  </div>
-  <div class="field">
-    <%= f.label :user_rold_id %><br />
-    <%= f.number_field :user_rold_id %>
+    <%= f.label :identifier_url %><br />
+    <%= f.text_field :identifier_url %>
   </div>
   <div class="field">
     <%= f.label :position_type_id %><br />
     <%= f.number_field :position_type_id %>
   </div>
   <div class="field">
-    <%= f.label :admin %><br />
-    <%= f.check_box :admin %>
-  </div>
-  <div class="field">
-    <%= f.label :start_work_day %><br />
-    <%= f.datetime_select :start_work_day %>
+    <%= f.label :remember_token %><br />
+    <%= f.text_field :remember_token %>
   </div>
   <div class="field">
     <%= f.label :sex_id %><br />
     <%= f.number_field :sex_id %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.label :start_work_day %><br />
+    <%= f.datetime_select :start_work_day %>
   </div>
   <div class="field">
-    <%= f.label :remember_token %><br />
-    <%= f.text_field :remember_token %>
-  </div>
-  <div class="field">
-    <%= f.label :identifier_url %><br />
-    <%= f.text_field :identifier_url %>
+    <%= f.label :user_role_id %><br />
+    <%= f.number_field :user_role_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

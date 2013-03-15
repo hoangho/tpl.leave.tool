@@ -1,4 +1,5 @@
 class LeaveRequestsController < ApplicationController
+  
   # GET /leave_requests
   # GET /leave_requests.json
   def index

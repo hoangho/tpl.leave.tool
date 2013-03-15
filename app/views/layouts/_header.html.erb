@@ -1,0 +1,18 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <% if signed_in? %>
+        <%= link_to "Leave tools", root_path, id: "logo" %>
+      <% end %>
+      
+      <nav>
+        <ul class="nav pull-right">
+          <% if signed_in? %>
+            <%= render 'layouts/form_signed_in' %>
+            <li><%= link_to "New leave", new_leave_request_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

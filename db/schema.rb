@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130315034938) do
+ActiveRecord::Schema.define(:version => 20130315054400) do
 
   create_table "leave_requests", :force => true do |t|
     t.integer  "leave_type_id"
@@ -51,18 +51,18 @@ ActiveRecord::Schema.define(:version => 20130315034938) do
   end
 
   create_table "users", :force => true do |t|
+    t.boolean  "admin"
+    t.float    "balance"
+    t.datetime "day_of_birth"
+    t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.datetime "day_of_birth"
-    t.float    "balance"
-    t.integer  "user_rold_id"
-    t.integer  "position_type_id"
-    t.boolean  "admin"
-    t.datetime "start_work_day"
-    t.integer  "sex_id"
-    t.string   "email"
-    t.string   "remember_token"
     t.string   "identifier_url"
+    t.integer  "position_type_id"
+    t.string   "remember_token"
+    t.integer  "sex_id"
+    t.datetime "start_work_day"
+    t.integer  "user_role_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
