@@ -1,0 +1,14 @@
+%table{:style => "width:100%", :border => "10", :bordercolor => "gray"}
+  %tr
+    %th.main_header{:colspan => "2"} New Leave Application
+  %tr
+    %td.sub_header{:colspan => "2"}Employ Details
+  %tr
+    %td.row_leave_left Applicant's name    :
+    %td.row_leave_right= current_user.full_name
+  %tr
+    %td.row_leave_left Position    :
+    %td.row_leave_right= current_user.position_type.name
+  %tr
+    %td.row_leave_left Balance    :
+    %td.row_leave_right= current_user.balance

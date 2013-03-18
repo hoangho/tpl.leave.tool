@@ -19,6 +19,10 @@ module SessionsHelper
   		@current_user = user
 	end
 
+	def current_user?(user)
+   		current_user == user
+    end
+
 	#set current user
 	def current_user
   	@current_user ||= User.find_by_remember_token(cookies[:remember_token])
@@ -36,7 +40,7 @@ module SessionsHelper
 	    unless signed_in?
 	      # store_location
 	      # redirect_to new_session_path
-	      redirect_to access_denied_path
+	      redirect_to_access_denied_path
 	    end
   	end
 
@@ -47,5 +51,11 @@ module SessionsHelper
 
 	def store_location
 		session[:return_to] = request.url
+	end
+
+	def ensure_admin_signed_in
+		unless signed_in? && current_user.admin
+			redirect_to_access_denied_path
+		end
 	end
 end

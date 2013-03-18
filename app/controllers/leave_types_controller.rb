@@ -1,4 +1,6 @@
 class LeaveTypesController < ApplicationController
+  before_filter :ensure_admin_signed_in
+  
   # GET /leave_types
   # GET /leave_types.json
   def index

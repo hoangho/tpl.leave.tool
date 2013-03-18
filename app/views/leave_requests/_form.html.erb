@@ -1,45 +1,58 @@
-<%= form_for(@leave_request) do |f| %>
-  <% if @leave_request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@leave_request.errors.count, "error") %> prohibited this leave_request from being saved:</h2>
-
-      <ul>
-      <% @leave_request.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :leave_type_id %><br />
-    <%= f.number_field :leave_type_id %>
+<div class="row" style="width:100%">
+  <div style="width:100%">
+    <%= form_for(@leave_request) do |f| %>
+      <%= render 'form_basic_user_info' %>
+      <table style="width:100%" border="10" bordercolor="brown">
+        <tr>
+          <td colspan="2" class="sub_header">Leaving Request Details</td>
+        </tr>
+        <tr>
+          <td class="row_leave_left">Reason    :</td>
+          <td>
+            <%= f.select :leave_type_id, options_from_collection_for_select(@leave_types, 'id', 'name', nil),
+             {:include_blank => true}, {:style => "width:30%"} %>
+          </td>
+        </tr>
+         <tr rowspan="2">
+          <td class="row_leave_left">Reason text    :<br/>(send to your manager)</td>
+          <td>
+            <%= f.text_area :comment, :style => "width:60%;height:300px;" %>
+          </td>
+        </tr>
+         <tr>
+          <td class="row_leave_left">Leave from    :</td>
+          <td>
+             <%= f.datetime_select :leave_from, {:style => "width:30px"} %>
+          </td>
+        </tr>
+        <tr>
+          <td class="row_leave_left">Leave to    :</td>
+          <td>
+            <%= f.datetime_select :leave_to %>
+          </td>
+        </tr>
+        <tr>
+          <td class="row_leave_left">Leave days   :</td>
+          <td>
+            asdfsdf
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="sub_header">Leave Control</td>
+        </tr>
+        <tr>
+          <td class="row_leave_left">Select your managers    :</td>
+          <td>
+            <%= f.select :user_approve_id, options_from_collection_for_select(@managers, 'id', 'full_name',nil),
+            { :include_blank => true }, {:style => "width:30%"} %>
+          </td>
+        </tr>
+      </table>
+        <tr>
+          <td colspan="2" class="sub_header" style="align:center;text-align: center;">
+            <%= f.submit "submit", class: "btn btn-large btn-primary"%>
+          </td>
+        </tr>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_area :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :leave_from %><br />
-    <%= f.datetime_select :leave_from %>
-  </div>
-  <div class="field">
-    <%= f.label :leave_to %><br />
-    <%= f.datetime_select :leave_to %>
-  </div>
-  <div class="field">
-    <%= f.label :user_request_id %><br />
-    <%= f.number_field :user_request_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_approve_id %><br />
-    <%= f.number_field :user_approve_id %>
-  </div>
-  <div class="field">
-    <%= f.label :is_approved %><br />
-    <%= f.check_box :is_approved %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

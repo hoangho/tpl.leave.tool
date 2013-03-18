@@ -1,0 +1,27 @@
+%h1 Listing users
+%table{ :style=>"width:100%", :border=>"10", :bordercolor=>"gray" }
+  %tr
+    %th Full name
+    %th Email
+    %th Day of birth
+    %th Position 
+    %th Sex
+    %th Start work day
+    %th Number request
+    %th Balance
+    %th User role
+
+    - @users.each do |user|
+      %tr
+        %td{ :style=>"color:blue"}= link_to user.full_name, user_path(user)
+        %td= user.email
+        %td= user.day_of_birth 
+        %td= user.position_type.name
+        %td= user.sex.name
+        %td= user.start_work_day
+        %td= user.leave_requests.count
+        %td= user.balance
+        %td= user.user_role.name
+
+%br
+= link_to 'New User', new_user_path

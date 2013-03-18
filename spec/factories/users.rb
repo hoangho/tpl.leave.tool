@@ -5,14 +5,20 @@ FactoryGirl.define do
     admin false
     balance 1.5
     day_of_birth "2013-03-15 12:44:01"
-    email "MyString"
+    email "test01@gmail.com"
     first_name "MyString"
     last_name "MyString"
     identifier_url "MyString"
     position_type_id 1
-    remember_token "MyString"
+    remember_token SecureRandom.urlsafe_base64
     sex_id 1
     start_work_day "2013-03-15 12:44:01"
-    user_role_id 1
+    user_role_id 3
+
+    factory :admin do
+        position_type_id 5
+        user_role_id 1
+        admin true
+    end
   end
 end

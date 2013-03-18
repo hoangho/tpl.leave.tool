@@ -3,12 +3,10 @@ require 'spec_helper'
 describe "Static Page" do
 	
 	before { visit root_path }
-
-  	subject { page }
+	subject { page }
 	# Home
 	describe "Home page" do
-		before { visit root_path }
-		it { should have_selector('title', text:'Leave Tool')}
+		it { should have_selector('title', text:"Leave Tool")}
 	end
 	
 	#About

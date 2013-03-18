@@ -15,11 +15,15 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @user }
-    end
+    @title_page = @user.full_name
+    if current_user?(@user) || current_user.admin?
+       respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @user }
+      end
+    else
+      redirect_to_access_denied_path
+    end 
   end
 
   # GET /users/new
@@ -76,9 +80,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.destroy
 
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
+    flash[:success] = "User '#{@user.full_name}' was successfully deleted"
+    redirect_to users_path
   end
 end
