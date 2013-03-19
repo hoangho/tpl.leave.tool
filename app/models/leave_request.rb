@@ -9,7 +9,7 @@ class LeaveRequest < ActiveRecord::Base
   validates :leave_from, :leave_to, :leave_type_id,
   			:user_approve_id, :user_request_id, presence: true
 
-  scope :recent, order: 'leave_requests.created_at DESC'
+  scope :order_by_created_day, order: 'leave_requests.created_at DESC'
 
   def status
   	if is_approved

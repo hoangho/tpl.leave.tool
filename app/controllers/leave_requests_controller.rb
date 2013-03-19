@@ -1,8 +1,10 @@
 class LeaveRequestsController < ApplicationController
+  before_filter :ensure_signed_in
+  before_filter :ensure_admin_signed_in, only: [:index, :destroy]
   # GET /leave_requests
   # GET /leave_requests.json
   def index
-    @leave_requests = LeaveRequest.all
+    @leave_requests = LeaveRequest.order_by_created_day
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @leave_requests }
@@ -13,11 +15,13 @@ class LeaveRequestsController < ApplicationController
   # GET /leave_requests/1.json
   def show
     @leave_request = LeaveRequest.find(params[:id])
-   
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @leave_request }
+    if !current_user.admin? && current_user.id != @leave_request.user_request_id
+      redirect_to_access_denied_path
     end
+    # respond_to do |format|
+    #   format.html # show.html.erb
+    #   format.json { render json: @leave_request }
+    # end
   end
 
   # GET /leave_requests/new

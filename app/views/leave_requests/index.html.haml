@@ -1,6 +1,7 @@
 %h1 Listing leave_requests
 %table{ :style=>"width:100%", :border=>"10", :bordercolor=>"gray" }
   %tr
+    %th Created at
     %th Leave type
     %th Comment
     %th Leave from
@@ -8,22 +9,20 @@
     %th User request
     %th User approve
     %th Is approved
-    %th 
-    %th 
-    %th 
 
     - @leave_requests.each do |leave_request|
       %tr
-        %td= leave_request.leave_type_id
+        %td= leave_request.created_at
+        %td= leave_request.leave_type.name
         %td= leave_request.comment
-        %td= leave_request.leave_from
+        %td= leave_request.leave_from.to_s(:short)
         %td= leave_request.leave_to
-        %td= leave_request.user_request_id
-        %td= leave_request.user_approve_id
+        %td= link_to leave_request.user_request.full_name, user_path(leave_request.user_request)
+        %td= link_to leave_request.user_approve.full_name, user_path(leave_request.user_approve)
         %td= leave_request.is_approved
-        %td= link_to 'Show', leave_request
-        %td= link_to 'Edit', edit_leave_request_path(leave_request)
-        %td= link_to 'Destroy', leave_request, method: :delete, data: { confirm: 'Are you sure?' }
+        / %td= link_to 'Show', leave_request
+        / %td= link_to 'Edit', edit_leave_request_path(leave_request)
+        / %td= link_to 'Destroy', leave_request, method: :delete, data: { confirm: 'Are you sure?' }
 
 %br
 = link_to 'New Leave request', new_leave_request_path

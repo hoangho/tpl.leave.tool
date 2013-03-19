@@ -5,8 +5,6 @@
     %th Email
     %th Day of birth
     %th Position 
-    %th Sex
-    %th Start work day
     %th Number request
     %th Balance
     %th User role
@@ -17,8 +15,6 @@
         %td= user.email
         %td= user.day_of_birth 
         %td= user.position_type.name
-        %td= user.sex.name
-        %td= user.start_work_day
         %td= user.leave_requests.count
         %td= user.balance
         %td= user.user_role.name

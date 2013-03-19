@@ -7,4 +7,11 @@ module ApplicationHelper
 			"#{base_title} | #{page_title}"	
 		end
 	end
+
+	def military_hour_to_civil_hour(hour)
+	  	mod = (hour % 12)
+	  	mod + (12 * (mod > 0 ? 0 : 1))
+	end
+	Date::DATE_FORMATS[:abc] = lambda {|d| "#{d.month}/#{d.day}/#{d.year}" }
+
 end

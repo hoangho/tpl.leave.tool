@@ -1,0 +1,24 @@
+%table{ :style=>"width:100%", :border=>"10", :bordercolor=>"gray" }
+  %tr
+    %td.sub_header{ :colspan=>"2" } Employ Details
+  %tr
+    %td.row_leave_left Full name    :
+    %td.row_leave_right= @user.full_name
+  %tr
+    %td.row_leave_left Balance    :
+    %td.row_leave_right= @user.balance
+  %tr
+    %td.row_leave_left Email    :
+    %td.row_leave_right= @user.email
+  %tr
+    %td.row_leave_left Sex      :
+    %td.row_leave_right= @user.sex.name
+  %tr 
+    %td.row_leave_left Position    :
+    %td.row_leave_right= @user.position_type.name
+  %tr
+    %td.row_leave_left Day of birth    :
+    %td.row_leave_right= @user.day_of_birth
+  %tr
+    %td.row_leave_left Start work day    :
+    %td.row_leave_right= @user.start_work_day 
