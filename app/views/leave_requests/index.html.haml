@@ -8,7 +8,7 @@
     %th Leave to
     %th User request
     %th User approve
-    %th Is approved
+    %th Status
 
     - @leave_requests.each do |leave_request|
       %tr
@@ -19,7 +19,7 @@
         %td= leave_request.leave_to
         %td= link_to leave_request.user_request.full_name, user_path(leave_request.user_request)
         %td= link_to leave_request.user_approve.full_name, user_path(leave_request.user_approve)
-        %td= leave_request.is_approved
+        %td= leave_request.request_status.name
         / %td= link_to 'Show', leave_request
         / %td= link_to 'Edit', edit_leave_request_path(leave_request)
         / %td= link_to 'Destroy', leave_request, method: :delete, data: { confirm: 'Are you sure?' }

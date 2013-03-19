@@ -40,18 +40,23 @@ class LeaveRequestsController < ApplicationController
   # GET /leave_requests/1/edit
   def edit
     @leave_request = LeaveRequest.find(params[:id])
+    @leave_types = LeaveType.all
+    @request_statuses = RequestStatus.all
+    unless current_user.admin? || current_user.id == @leave_request.user_approve_id
+      redirect_to_access_denied_path
+    end
   end
 
   # POST /leave_requests
   # POST /leave_requests.json
   def create
     @leave_request = current_user.leave_requests.build(params[:leave_request])
-    @leave_request.is_approved = false
     # respond_to do |format|
       if @leave_request.save
         # format.html { redirect_to @leave_request, notice: 'Leave request was successfully created.' }
         # format.json { render json: @leave_request, status: :created, location: @leave_request }
-        flash[:success] = "Leave request was successfully created."
+        LeaveToolNotifier.request_created(@leave_request).deliver
+        flash[:success] = "Leave request was successfully created and sent to your manager"
         redirect_to current_user
       else
         flash[:errors] = @leave_request.errors.full_messages

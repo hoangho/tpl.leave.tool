@@ -1,6 +1,22 @@
 %h1 Editing leave_request
-
-= render 'form'
-
+= form_for @leave_request do |f|
+	%table{ :style=>"width:100%", :border=>"10", :bordercolor=>"gray" }
+		%tr
+			%th User request
+			%th Created at
+			%th Leave from
+			%th Leave to
+			%th Leave day
+			%th Status
+		%tr
+			%td= @leave_request.user_request.full_name
+			%td= @leave_request.created_at
+			%td= @leave_request.leave_from
+			%td= @leave_request.leave_to
+			%td asf
+			%td= f.select :request_status_id, options_from_collection_for_select(@request_statuses, 'id', 'name', nil), 
+											{:include_blank => true}, {:style => "width:100%"}
+	= f.submit "Update"
+	
 = link_to 'Show', @leave_request 
 = link_to 'Back', leave_requests_path

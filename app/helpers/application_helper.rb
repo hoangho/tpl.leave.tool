@@ -8,6 +8,7 @@ module ApplicationHelper
 		end
 	end
 
+  	
 	def military_hour_to_civil_hour(hour)
 	  	mod = (hour % 12)
 	  	mod + (12 * (mod > 0 ? 0 : 1))

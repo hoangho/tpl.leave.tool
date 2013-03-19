@@ -15,7 +15,7 @@
       %td= lr.leave_from
       %td= lr.leave_to
       %td= "leave_day"
-      %td= lr.status
+      %td= lr.request_status.name
       %td= lr.user_approve.full_name
 - if current_user.admin?
   = link_to "Edit", edit_user_path(@user)
